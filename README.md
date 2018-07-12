@@ -16,7 +16,8 @@ Use VS code, and install all packages by running 'npm i', and 'node start index.
 ## Built With
 
 * [Node.js](https://nodejs.org/en/) - The web framework used.
-* [MongoDB](https://www.mongodb.com/) - The database used. 
+* [MongoDB](https://www.mongodb.com/) - The database used.
+* [JavaScript](https://javascript.info/) - The web framework used.
 * [GIT](https://git-scm.com/) - Source Management.
 
 ## Contributing
@@ -25,7 +26,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
 
