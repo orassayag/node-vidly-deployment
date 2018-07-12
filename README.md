@@ -1,6 +1,6 @@
 # Node Vidly Deployment
 
-Built in July 2017.
+Built in July 2018.
 REST API built using Node.js and JavaScript ES6 for renting movies from virtual movies library.
 Using libaries such as: bcrypt (For decryoting token), compression (Compress all the project data), eslint (Linting for etter code), express (Rest calls and server CRUD managment), fawn (2 face transaction), helmet (Secure the data), jsonwebtoken (Generate user atuntication tokens), moment (Manager date times), mongoose (NoSQL Bigdata Database), winston (For logging into external log files), winston-mongodb (For logging into mongodb itself).
 Also, using jest and supertest for both unit and integration tests.
