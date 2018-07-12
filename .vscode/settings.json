@@ -1,0 +1,7 @@
+{
+    "eslint.trace.server": "messages",
+    "eslint.alwaysShowStatus": true,
+    "beautify.config": { "brace_style": "collapse,preserve-inline" },
+    "files.trimFinalNewlines": true,
+    "editor.insertSpaces": true
+}
