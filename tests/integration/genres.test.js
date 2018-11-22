@@ -55,7 +55,7 @@ describe('/api/genres', () => {
 
     describe('GET /:id', () => {
         it('should return specific genre by given id', async () => {
-            // Insert fake genre
+            // Insert fake genre.
             const genre = await new Genre({
                 name: 'genre1'
             }).save();
@@ -74,7 +74,7 @@ describe('/api/genres', () => {
         });
 
         it('should return 404 genre by given id that not exists in the database', async () => {
-            // Insert fake genre
+            // Insert fake genre.
             const genre = await new Genre({
                 name: 'genre1'
             }).save();
@@ -101,7 +101,7 @@ describe('/api/genres', () => {
     describe('POST /', () => {
         // Define the happy path, and then in each test we change
         // one parameter that clearly aligns with the name of the
-        // test. 
+        // test.
         let token;
         let name;
         const execute = async () => {
@@ -112,7 +112,7 @@ describe('/api/genres', () => {
                 .send({ name: name });
         };
 
-        // Generate user token and parameter name before each test
+        // Generate user token and parameter name before each test.
         beforeEach(() => {
             token = new User().generateAuthToken();
             name = 'genre1';
@@ -192,12 +192,12 @@ describe('/api/genres', () => {
 
 // Integration tests for auth middlewere.
 describe('auth middlewere', () => {
-    // Create the server before each test
+    // Create the server before each test.
     beforeEach(() => {
         server = require('../../index');
     });
 
-    // Close the server after each test
+    // Close the server after each test.
     afterEach(async () => {
         if (server) {
             await server.close();
@@ -333,7 +333,7 @@ describe('/api/returns', () => {
     const createCustomer = async () => {
         return await new Customer({
             _id: customerId,
-            name: 'Test cutomer',
+            name: 'Test customer',
             phone: '1234567'
         }).save();
     };

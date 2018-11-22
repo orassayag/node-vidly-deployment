@@ -71,3 +71,12 @@
 {"level":"info","message":"Connected to mongodb://localhost:27017/vidly...","timestamp":"2018-07-18T09:11:27.324Z"}
 {"level":"info","message":"Listening to port 3000...","timestamp":"2018-07-18T09:12:01.239Z"}
 {"level":"info","message":"Connected to mongodb://localhost:27017/vidly_tests...","timestamp":"2018-07-18T09:12:02.288Z"}
+{"level":"info","message":"Listening to port undefined...","timestamp":"2018-11-06T11:07:41.907Z"}
+{"level":"info","message":"Server on undefined environment...","timestamp":"2018-11-06T11:07:41.908Z"}
+{"level":"info","message":"Connected to mongodb://localhost:27017/vidly...","timestamp":"2018-11-06T11:07:42.960Z"}
+{"level":"info","message":"Listening to port 8080...","timestamp":"2018-11-06T14:07:41.775Z"}
+{"level":"info","message":"Server on undefined environment...","timestamp":"2018-11-06T14:07:41.776Z"}
+{"level":"info","message":"Connected to mongodb://localhost:27017/vidly...","timestamp":"2018-11-06T14:07:42.832Z"}
+{"level":"info","message":"Listening to port 3000...","timestamp":"2018-11-06T14:13:51.312Z"}
+{"level":"info","message":"Server on undefined environment...","timestamp":"2018-11-06T14:13:51.313Z"}
+{"level":"info","message":"Connected to mongodb://localhost:27017/vidly...","timestamp":"2018-11-06T14:13:52.372Z"}

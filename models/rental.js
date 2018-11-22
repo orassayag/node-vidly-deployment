@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
-const {
-    ValidateResult
-} = require('../helpers/validations');
+const { ValidateResult } = require('../helpers/validations');
 
-// Create the schema
+// Create the schema.
 const rentalSchema = new mongoose.Schema({
     customer: {
         type: new mongoose.Schema({
@@ -58,7 +56,7 @@ const rentalSchema = new mongoose.Schema({
     }
 });
 
-// Define new function to get rantal using customerId and movieId parameters.
+// Define new function to get rental using customerId and movieId parameters.
 rentalSchema.statics.lookup = function(customerId, movieId) {
     // Get the rental from database.
     return this.findOne({
@@ -67,8 +65,8 @@ rentalSchema.statics.lookup = function(customerId, movieId) {
     });
 };
 
-// Calcualte the rental fee and setup the dateReturned property.
-rentalSchema.methods.return = function (dailyRentalRate) {
+// Calculate the rental fee and setup the dateReturned property.
+rentalSchema.methods.return = function(dailyRentalRate) {
     const timeDiff = Math.abs(this.dateOut - new Date());
     const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
     this.dateReturned = new Date();
@@ -77,9 +75,9 @@ rentalSchema.methods.return = function (dailyRentalRate) {
 
 const Rental = mongoose.model('Rental', rentalSchema);
 
-// Validate the rental parameters
+// Validate the rental parameters.
 const validateRental = (rental) => {
-    // Validate customerId
+    // Validate customerId.
     if (!rental.customerId || rental.customerId.trim().length <= 0) {
         return new ValidateResult(false, 'Parameter customerId is required.');
     }
@@ -88,7 +86,7 @@ const validateRental = (rental) => {
         return new ValidateResult(false, `Invalid customer id ${ rental.customerId }.`);
     }
 
-    // Validate movieId
+    // Validate movieId.
     if (!rental.movieId || rental.movieId.trim().length <= 0) {
         return new ValidateResult(false, 'Parameter movieId is required.');
     }
@@ -96,8 +94,11 @@ const validateRental = (rental) => {
     if (!mongoose.Types.ObjectId.isValid(rental.movieId)) {
         return new ValidateResult(false, `Invalid movie id ${ rental.movieId }.`);
     }
+
     return new ValidateResult(true, null);
 };
 
-module.exports.Rental = Rental;
-module.exports.validateRental = validateRental;
+module.exports = {
+    Rental: Rental,
+    validateRental: validateRental
+};

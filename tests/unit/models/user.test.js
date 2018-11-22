@@ -1,9 +1,7 @@
 const jwt = require('jsonwebtoken');
 const config = require(`../../../config/config.${(process.env.NODE_ENV || 'development')}.json`);
 const secrets = require(`../../../secrets/secrets.${(process.env.NODE_ENV || 'development')}.json`);
-const {
-    User,
-} = require('../../../models/user');
+const { User } = require('../../../models/user');
 const moongose = require('mongoose');
 
 describe('user.generateAuthToken', () => {

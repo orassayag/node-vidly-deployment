@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-const {
-    ValidateResult
-} = require('../helpers/validations');
+const { ValidateResult } = require('../helpers/validations');
 
 const genreSchema = new mongoose.Schema({
     name: {
@@ -12,10 +10,10 @@ const genreSchema = new mongoose.Schema({
     }
 });
 
-// Create the schema
+// Create the schema.
 const Genre = mongoose.model('Genre', genreSchema);
 
-// Validate the genre id
+// Validate the genre id.
 const validateGenreId = (id) => {
     if (!id) {
         return new ValidateResult(false, 'No id sent.');
@@ -27,9 +25,9 @@ const validateGenreId = (id) => {
     return new ValidateResult(true, null);
 }
 
-// Validate the genre parameters
+// Validate the genre parameters.
 const validateGenre = (genre) => {
-    // Validate name
+    // Validate name.
     if (!genre.name) {
         return new ValidateResult(false, 'Parameter name is required.');
     }
@@ -40,7 +38,9 @@ const validateGenre = (genre) => {
     return new ValidateResult(true, null);
 };
 
-module.exports.Genre = Genre;
-module.exports.genreSchema = genreSchema;
-module.exports.validateGenreId = validateGenreId;
-module.exports.validateGenre = validateGenre;
+module.exports = {
+    Genre: Genre,
+    genreSchema = genreSchema,
+    validateGenreId = validateGenreId,
+    validateGenre = validateGenre
+};

@@ -1,12 +1,5 @@
-const mongoose = require('mongoose');
-const {
-    User,
-    validateUserEmail,
-    validateUserPassword
-} = require('../models/user');
-const {
-    ValidateResult
-} = require('../helpers/validations');
+const { User, validateUserEmail, validateUserPassword } = require('../models/user');
+const { ValidateResult } = require('../helpers/validations');
 const express = require('express');
 const bcrypt = require('bcrypt');
 const router = express.Router();
@@ -41,7 +34,7 @@ router.post('/', async (req, res) => {
         return res.status(400).send('Invalid user email or password.');
     }
 
-    // After successful authentication create a token for the user and return it
+    // After successful authentication create a token for the user and return it.
     const userToken = user.generateAuthToken();
     res.send(userToken);
 });
@@ -52,13 +45,13 @@ const validateRequestAuthUser = (req) => {
         return new ValidateResult(false, 'No request object.');
     }
 
-    // Validate email
+    // Validate email.
     const isValidEmail = validateUserEmail(req.body.email);
     if (!isValidEmail.isValid) {
         return isValidEmail;
     }
 
-    // Validate password
+    // Validate password.
     const isValidPassword = validateUserPassword(req.body.password);
     if (!isValidPassword.isValid) {
         return isValidPassword;

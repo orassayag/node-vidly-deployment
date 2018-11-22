@@ -8,9 +8,9 @@ const moongose = require('mongoose');
 describe('auth middlewere', () => {
     it('should populate req.user with the payload of a valid user token', () => {
         // Create user structure with mongoose id.
-        const user = { 
+        const user = {
             _id: new moongose.Types.ObjectId().toHexString(),
-            isAdmin: true,  
+            isAdmin: true,
         };
 
         // Create user token with user instance.

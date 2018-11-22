@@ -1,11 +1,5 @@
-const mongoose = require('mongoose');
-const {
-    User,
-    validateUser
-} = require('../models/user');
-const {
-    ValidateResult
-} = require('../helpers/validations');
+const { User, validateUser } = require('../models/user');
+const { ValidateResult } = require('../helpers/validations');
 const auth = require('../middleware/auth');
 const express = require('express');
 const bcrypt = require('bcrypt');
@@ -18,20 +12,20 @@ router.get('/me', auth, async (req, res) => {
         return res.status(500).send(`Failed to get user from token.`);
     }
 
-    // Get the user by id without the password
+    // Get the user by id without the password.
     let user;
     try {
         user = await User.findById(req.user._id).select('-password -__v');
     } catch (err) {
-        console.error(`Failed to get the user (id: ${req.user._id})`, err);
+        console.error(`Failed to get the user (id: ${req.user._id}).`, err);
     }
 
-    // Validate user from the database, if not exists, return 404 Not Found
+    // Validate user from the database, if not exists, return 404 Not Found.
     if (!user) {
         return res.status(404).send(`Failed to get the user (id: ${req.user._id}) from the database.`);
     }
 
-    // Return user relevant properties
+    // Return user relevant properties.
     return res.send(user);
 });
 
@@ -62,7 +56,7 @@ router.post('/', async (req, res) => {
 
     let userPassword;
 
-    // Hash the user password
+    // Hash the user password.
     try {
         let salt = await bcrypt.genSalt(10);
         userPassword = await bcrypt.hash(req.body.password.trim(), salt);

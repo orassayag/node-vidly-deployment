@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { ValidateResult } = require('../helpers/validations');
 const { genreSchema } = require('./genre');
 
-// Create movie schema
+// Create movie schema.
 const Movie = mongoose.model('movie', new mongoose.Schema({
     title: {
         type: String,
@@ -31,22 +31,22 @@ const Movie = mongoose.model('movie', new mongoose.Schema({
     }
 }));
 
-// Validate the movie id
+// Validate the movie id.
 const validateMovieId = (id) => {
     if (!id) {
         return new ValidateResult(false, 'No id sent.');
     }
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        return new ValidateResult(false, `Invalid movie id ${ id }`);
+        return new ValidateResult(false, `Invalid movie id ${ id }.`);
     }
 
     return new ValidateResult(true, null);
 }
 
-// Validate the movie parameters
+// Validate the movie parameters.
 const validateMovie = (movie) => {
-    // Validate genreId
+    // Validate genreId.
     if (!movie.genreId) {
         return new ValidateResult(false, 'Parameter genreId is required.');
     }
@@ -55,7 +55,7 @@ const validateMovie = (movie) => {
         return new ValidateResult(false, `Invalid genre id ${ movie.genreId }.`);
     }
 
-    // Validate title
+    // Validate title.
     if (!movie.title) {
         return new ValidateResult(false, 'Parameter title is required.');
     }
@@ -64,7 +64,7 @@ const validateMovie = (movie) => {
         return new ValidateResult(false, 'Invalid parameter title (Must be at least 5 and maximum 255 characters length).');
     }
 
-    // Validate numberInStock
+    // Validate numberInStock.
     if (!movie.numberInStock) {
         return new ValidateResult(false, 'Parameter numberInStock is required.');
     }
@@ -78,7 +78,7 @@ const validateMovie = (movie) => {
         return new ValidateResult(false, 'Invalid parameter numberInStock (Must be at least 0 and maximum 255).');
     }
 
-    // Validate dailyRentalRate
+    // Validate dailyRentalRate.
     if (!movie.dailyRentalRate) {
         return new ValidateResult(false, 'Parameter dailyRentalRate is required.');
     }
@@ -91,9 +91,12 @@ const validateMovie = (movie) => {
     if (dailyRentalRate < 0 || dailyRentalRate > 255) {
         return new ValidateResult(false, 'Invalid parameter dailyRentalRate (Must be at least 0 and maximum 255).');
     }
+
     return new ValidateResult(true, null);
 };
 
-module.exports.Movie = Movie;
-module.exports.validateMovieId = validateMovieId;
-module.exports.validateMovie = validateMovie;
+module.exports = {
+    Movie: Movie,
+    validateMovieId: validateMovieId,
+    validateMovie: validateMovie
+};

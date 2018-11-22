@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
         return res.status(401).send('Access denied. No token was provided.');
     }
 
-    // Check if the user token is valid - return the user with the decoded 
+    // Check if the user token is valid - return the user with the decoded
     // payload to next method. If invalid - return 400 Bad request.
     try {
         const decodedPayload = jwt.verify(userToken, secrets[config.jwtPrivateKey]);

@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-const {
-    ValidateResult
-} = require('../helpers/validations');
+const { ValidateResult } = require('../helpers/validations');
 const jwt = require('jsonwebtoken');
 const config = require(`../config/config.${(process.env.NODE_ENV || 'development')}.json`);
 const secrets = require(`../secrets/secrets.${(process.env.NODE_ENV || 'development')}.json`);
@@ -34,7 +32,7 @@ const userSchema = new mongoose.Schema({
 });
 
 // Add generate token method specific for the user model class.
-userSchema.methods.generateAuthToken = function () {
+userSchema.methods.generateAuthToken = function() {
     return jwt.sign({
         _id: this._id,
         isAdmin: this.isAdmin
@@ -46,7 +44,7 @@ userSchema.methods.generateAuthToken = function () {
 // Generate instance of user with the schema.
 const User = mongoose.model('User', userSchema);
 
-// Validate the user parameters
+// Validate the user parameters.
 const validateUser = (user) => {
     // Validate name
     if (!user.name) {
@@ -57,13 +55,13 @@ const validateUser = (user) => {
         return new ValidateResult(false, 'Invalid parameter name (Must be at least 5 and maximum 100 characters length).');
     }
 
-    // Validate email
+    // Validate email.
     const isValidEmail = validateUserEmail(user.email);
     if (!isValidEmail.isValid) {
         return isValidEmail;
     }
 
-    // Validate password
+    // Validate password.
     const isValidPassword = validateUserPassword(user.password);
     if (!isValidPassword.isValid) {
         return isValidPassword;
@@ -73,7 +71,7 @@ const validateUser = (user) => {
 };
 
 const validateUserEmail = (email) => {
-    // Validate email
+    // Validate email.
     if (!email) {
         return new ValidateResult(false, 'Parameter email is required.');
     }
@@ -82,15 +80,16 @@ const validateUserEmail = (email) => {
         return new ValidateResult(false, 'Invalid parameter email (Must be at least 5 and maximum 255 characters length).');
     }
 
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!re.test(String(email).toLowerCase())) {
         return new ValidateResult(false, 'Invalid parameter email (Not an email).');
     }
+
     return new ValidateResult(true, null);
 };
 
 const validateUserPassword = (password) => {
-    // Validate password
+    // Validate password.
     if (!password) {
         return new ValidateResult(false, 'Parameter password is required.');
     }
@@ -101,7 +100,9 @@ const validateUserPassword = (password) => {
     return new ValidateResult(true, null);
 };
 
-module.exports.User = User;
-module.exports.validateUser = validateUser;
-module.exports.validateUserEmail = validateUserEmail;
-module.exports.validateUserPassword = validateUserPassword;
+module.exports = {
+    User: User,
+    validateUser: validateUser,
+    validateUserEmail: validateUserEmail,
+    validateUserPassword: validateUserPassword
+};

@@ -8,9 +8,9 @@ const auth = require('../routes/auth');
 const returns = require('../routes/returns');
 const error = require('../middleware/error');
 
-// Define all routes of the API and error handling middleware
+// Define all routes of the API and error handling middleware.
 module.exports = (app) => {
-    // Routes
+    // Routes.
     app.use(express.json());
     app.use('/api/genres', genres);
     app.use('/api/customers', customers);
@@ -20,6 +20,6 @@ module.exports = (app) => {
     app.use('/api/auth', auth);
     app.use('/api/returns', returns);
 
-    // Error handling middleware
+    // Error handling middleware.
     app.use(error);
 };
