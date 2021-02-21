@@ -57,7 +57,7 @@ const rentalSchema = new mongoose.Schema({
 });
 
 // Define new function to get rental using customerId and movieId parameters.
-rentalSchema.statics.lookup = function(customerId, movieId) {
+rentalSchema.statics.lookup = function (customerId, movieId) {
     // Get the rental from database.
     return this.findOne({
         'customer._id': customerId,
@@ -66,7 +66,7 @@ rentalSchema.statics.lookup = function(customerId, movieId) {
 };
 
 // Calculate the rental fee and setup the dateReturned property.
-rentalSchema.methods.return = function(dailyRentalRate) {
+rentalSchema.methods.return = function (dailyRentalRate) {
     const timeDiff = Math.abs(this.dateOut - new Date());
     const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
     this.dateReturned = new Date();
@@ -83,7 +83,7 @@ const validateRental = (rental) => {
     }
 
     if (!mongoose.Types.ObjectId.isValid(rental.customerId)) {
-        return new ValidateResult(false, `Invalid customer id ${ rental.customerId }.`);
+        return new ValidateResult(false, `Invalid customer id ${rental.customerId}.`);
     }
 
     // Validate movieId.
@@ -92,7 +92,7 @@ const validateRental = (rental) => {
     }
 
     if (!mongoose.Types.ObjectId.isValid(rental.movieId)) {
-        return new ValidateResult(false, `Invalid movie id ${ rental.movieId }.`);
+        return new ValidateResult(false, `Invalid movie id ${rental.movieId}.`);
     }
 
     return new ValidateResult(true, null);

@@ -20,7 +20,7 @@ const validateGenreId = (id) => {
     }
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        return new ValidateResult(false, `Invalid genre id ${ id }.`);
+        return new ValidateResult(false, `Invalid genre id ${id}.`);
     }
     return new ValidateResult(true, null);
 }

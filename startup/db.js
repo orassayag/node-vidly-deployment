@@ -8,8 +8,8 @@ module.exports = () => {
     const db = secrets[config.dbConnectionString];
     console.log(db);
     mongoose.connect(db, {
-            useNewUrlParser: true
-        })
+        useNewUrlParser: true
+    })
         .then(() => {
             winston.info(`Connected to ${db}...`);
         });

@@ -38,7 +38,7 @@ const validateMovieId = (id) => {
     }
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        return new ValidateResult(false, `Invalid movie id ${ id }.`);
+        return new ValidateResult(false, `Invalid movie id ${id}.`);
     }
 
     return new ValidateResult(true, null);
@@ -52,7 +52,7 @@ const validateMovie = (movie) => {
     }
 
     if (!mongoose.Types.ObjectId.isValid(movie.genreId)) {
-        return new ValidateResult(false, `Invalid genre id ${ movie.genreId }.`);
+        return new ValidateResult(false, `Invalid genre id ${movie.genreId}.`);
     }
 
     // Validate title.

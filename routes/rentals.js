@@ -1,4 +1,4 @@
-const { Rental,validateRental } = require('../models/rental');
+const { Rental, validateRental } = require('../models/rental');
 const { Movie } = require('../models/movie');
 const { Customer } = require('../models/customer');
 const { ValidateResult } = require('../helpers/validations');
@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
 
     // Check if movie available to be rental, by the number in stock, if not, return 400 Bad Request.
     if (movie.numberInStock === 0) {
-        return res.status(400).send(`Movie ${ movie.title } is out of stock.`);
+        return res.status(400).send(`Movie ${movie.title} is out of stock.`);
     }
 
     // Get the customer of the rental by the id.

@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
     }
 
     // Check if isAdmin is type boolean, if not - return 400 Bad request.
-    if (typeof(req.user.isAdmin) !== 'boolean') {
+    if (typeof (req.user.isAdmin) !== 'boolean') {
         return res.status(400).send('Invalid request.');
     }
 

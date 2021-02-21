@@ -1,8 +1,7 @@
 # Node Vidly Deployment
 
 Built in July 2018.
-REST API built using Node.js and JavaScript ES6 for renting movies from virtual movies library.
-Using libraries such as: bcrypt (For decrypting token), compression (Compress all the project data), eslint (Linting for better code), express (Rest calls and server CRUD management), fawn (2 face transaction), helmet (Secure the data), jsonwebtoken (Generate user authentication tokens), moment (Manager date times), mongoose (NoSQL Big data Database), winston (For logging into external log files), winston-mongodb (For logging into mongodb itself).
+REST API built using Node.js and JavaScript ES6 for renting movies from virtual movies library. Using libraries such as: bcrypt (For decrypting token), compression (Compress all the project data), eslint (Linting for better code), express (Rest calls and server CRUD management), fawn (2 face transaction), helmet (Secure the data), jsonwebtoken (Generate user authentication tokens), moment (Manager date times), mongoose (NoSQL Big data Database), winston (For logging into external log files), winston-mongodb (For logging into mongodb itself).
 Also, using jest and supertest for both unit and integration tests.
 
 ## Getting Started
@@ -28,10 +27,14 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
-## Authors
+## Author
 
 * **Or Assayag** - *Initial work* - [orassayag](https://github.com/orassayag)
+* Or Assayag <orassayag@gmail.com>
+* GitHub: https://github.com/orassayag
+* StackOverFlow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+* LinkedIn: https://il.linkedin.com/in/orassayag
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This application has UNLICENSED License.
