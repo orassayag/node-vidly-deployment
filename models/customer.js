@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { ValidateResult } = require('../helpers/validations');
 
-// Create customer schema.
+// Create a customer schema.
 const Customer = mongoose.model('Customer', new mongoose.Schema({
     isGold: {
         type: Boolean,
@@ -24,14 +24,14 @@ const Customer = mongoose.model('Customer', new mongoose.Schema({
     }
 }));
 
-// Validate the customer id.
+// Validate the customer Id.
 const validateCustomerId = (id) => {
     if (!id) {
-        return new ValidateResult(false, 'No id sent.');
+        return new ValidateResult(false, 'No Id sent.');
     }
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        return new ValidateResult(false, `Invalid customer id ${id}.`);
+        return new ValidateResult(false, `Invalid customer Id ${id}.`);
     }
 
     return new ValidateResult(true, null);

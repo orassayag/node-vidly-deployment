@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { ValidateResult } = require('../helpers/validations');
 const { genreSchema } = require('./genre');
 
-// Create movie schema.
+// Create a movie schema.
 const Movie = mongoose.model('movie', new mongoose.Schema({
     title: {
         type: String,
@@ -31,14 +31,14 @@ const Movie = mongoose.model('movie', new mongoose.Schema({
     }
 }));
 
-// Validate the movie id.
+// Validate the movie Id.
 const validateMovieId = (id) => {
     if (!id) {
-        return new ValidateResult(false, 'No id sent.');
+        return new ValidateResult(false, 'No Id sent.');
     }
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        return new ValidateResult(false, `Invalid movie id ${id}.`);
+        return new ValidateResult(false, `Invalid movie Id ${id}.`);
     }
 
     return new ValidateResult(true, null);
@@ -52,7 +52,7 @@ const validateMovie = (movie) => {
     }
 
     if (!mongoose.Types.ObjectId.isValid(movie.genreId)) {
-        return new ValidateResult(false, `Invalid genre id ${movie.genreId}.`);
+        return new ValidateResult(false, `Invalid genre Id ${movie.genreId}.`);
     }
 
     // Validate title.

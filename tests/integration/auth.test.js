@@ -2,8 +2,8 @@ const request = require('supertest');
 const { User } = require('../../models/user');
 
 let server;
-// Integration tests for auth middlewere.
-describe('auth middlewere', () => {
+// Integration tests for auth middleware.
+describe('auth middleware', () => {
     // Define the happy path, and then in each test we change
     // one parameter that clearly aligns with the name of the
     // test.

@@ -4,14 +4,14 @@ const secrets = require(`../secrets/secrets.${(process.env.NODE_ENV || 'developm
 
 // Validate the user token.
 module.exports = (req, res, next) => {
-    // Check if the user token exists. If not found return 401 Unauthorized.
+    // Check if the user token exists. If not found return 401 - Unauthorized.
     const userToken = req.headers['x-auth-token'];
     if (!userToken || userToken.trim().length <= 0) {
         return res.status(401).send('Access denied. No token was provided.');
     }
 
     // Check if the user token is valid - return the user with the decoded
-    // payload to next method. If invalid - return 400 Bad request.
+    // payload to the next method. If invalid - return 400 - Bad Request.
     try {
         const decodedPayload = jwt.verify(userToken, secrets[config.jwtPrivateKey]);
         req.user = decodedPayload;

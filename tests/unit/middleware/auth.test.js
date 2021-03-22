@@ -2,18 +2,18 @@ const {
     User,
 } = require('../../../models/user');
 const auth = require('../../../middleware/auth');
-const moongose = require('mongoose');
+const mongoose = require('mongoose');
 
-// Unit tests for auth middlewere.
-describe('auth middlewere', () => {
-    it('should populate req.user with the payload of a valid user token', () => {
-        // Create user structure with mongoose id.
+// Unit tests for auth middleware.
+describe('auth middleware', () => {
+    it('should populate req.user with the payload of a valid user token.', () => {
+        // Create the user structure with mongoose Id.
         const user = {
-            _id: new moongose.Types.ObjectId().toHexString(),
+            _id: new mongoose.Types.ObjectId().toHexString(),
             isAdmin: true,
         };
 
-        // Create user token with user instance.
+        // Create the user token with the user instance.
         const userToken = new User(user).generateAuthToken();
 
         // Set the token on the header as well as other parameters.
@@ -24,7 +24,7 @@ describe('auth middlewere', () => {
         const res = {};
         const next = jest.fn();
 
-        // Call the auth middlewere.
+        // Call the auth middleware.
         auth(req, res, next);
 
         expect(req.user).toMatchObject(user);

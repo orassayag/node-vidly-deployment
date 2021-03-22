@@ -1,5 +1,5 @@
 {
     "PORT": "5000",
     "jwtPrivateKey": "vidly_jwtPrivateKey",
-    "dbConnectionString": "vidly_connectionstring"
+    "dbConnectionString": "vidly_connectionString"
 }

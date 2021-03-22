@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { ValidateResult } = require('../helpers/validations');
 
-// Create the schema.
+// Create a rental schema.
 const rentalSchema = new mongoose.Schema({
     customer: {
         type: new mongoose.Schema({
@@ -56,7 +56,7 @@ const rentalSchema = new mongoose.Schema({
     }
 });
 
-// Define new function to get rental using customerId and movieId parameters.
+// Define a new function to get a rental using customerId and movieId parameters.
 rentalSchema.statics.lookup = function (customerId, movieId) {
     // Get the rental from database.
     return this.findOne({
@@ -65,7 +65,7 @@ rentalSchema.statics.lookup = function (customerId, movieId) {
     });
 };
 
-// Calculate the rental fee and setup the dateReturned property.
+// Calculate the rental fee and set up the dateReturned property.
 rentalSchema.methods.return = function (dailyRentalRate) {
     const timeDiff = Math.abs(this.dateOut - new Date());
     const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
@@ -83,7 +83,7 @@ const validateRental = (rental) => {
     }
 
     if (!mongoose.Types.ObjectId.isValid(rental.customerId)) {
-        return new ValidateResult(false, `Invalid customer id ${rental.customerId}.`);
+        return new ValidateResult(false, `Invalid customer Id ${rental.customerId}.`);
     }
 
     // Validate movieId.
@@ -92,7 +92,7 @@ const validateRental = (rental) => {
     }
 
     if (!mongoose.Types.ObjectId.isValid(rental.movieId)) {
-        return new ValidateResult(false, `Invalid movie id ${rental.movieId}.`);
+        return new ValidateResult(false, `Invalid movie Id ${rental.movieId}.`);
     }
 
     return new ValidateResult(true, null);

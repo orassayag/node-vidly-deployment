@@ -10,17 +10,17 @@ const genreSchema = new mongoose.Schema({
     }
 });
 
-// Create the schema.
+// Create a genre schema.
 const Genre = mongoose.model('Genre', genreSchema);
 
-// Validate the genre id.
+// Validate the genre Id.
 const validateGenreId = (id) => {
     if (!id) {
-        return new ValidateResult(false, 'No id sent.');
+        return new ValidateResult(false, 'No Id sent.');
     }
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        return new ValidateResult(false, `Invalid genre id ${id}.`);
+        return new ValidateResult(false, `Invalid genre Id ${id}.`);
     }
     return new ValidateResult(true, null);
 }

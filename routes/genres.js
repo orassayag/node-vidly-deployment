@@ -11,16 +11,16 @@ router.get('/', async (req, res) => {
     return res.send(await Genre.find().sort('name'));
 });
 
-// Create genre and return it.
+// Create a genre and return it.
 router.post('/', auth, async (req, res) => {
 
-    // If invalid genre parameters, return 400 Bad Request.
+    // If invalid genre parameters, return 400 - Bad Request.
     const validateGenreResult = validateRequestGenre(req);
     if (!validateGenreResult.isValid) {
         return res.status(400).send(validateGenreResult.errorMessage);
     }
 
-    // Create new genre.
+    // Create a new genre.
     let genre;
     try {
         genre = await new Genre({
@@ -30,25 +30,25 @@ router.post('/', auth, async (req, res) => {
         console.error('Failed to create the genre.', err);
     }
 
-    // Validate genre saved on the database, if not, return 400 Bad Request.
+    // Validate genre saved on the database, if not, return 400 - Bad Request.
     if (!genre) {
         return res.status(400).send('Failed to save the genre on the database.');
     }
 
-    // Return new genre.
+    // Return the new genre.
     return res.send(genre);
 });
 
-// Update genre and return it.
+// Update a genre and return it.
 router.put('/:id', [validateObjectId], async (req, res) => {
 
-    //If invalid genre parameters, return 400 Bad Request.
+    // If invalid genre parameters, return 400 - Bad Request.
     const validateGenreResult = validateRequestGenre(req);
     if (!validateGenreResult.isValid) {
         return res.status(400).send(validateGenreResult.errorMessage);
     }
 
-    // Update existing genre.
+    // Update the existing genre.
     let genre;
     try {
         genre = await Genre.findByIdAndUpdate(req.params.id.trim(), {
@@ -57,65 +57,65 @@ router.put('/:id', [validateObjectId], async (req, res) => {
             new: true
         });
     } catch (err) {
-        console.error(`Failed to update the genre (id: ${req.params.id.trim()}).`, err);
+        console.error(`Failed to update the genre (Id: ${req.params.id.trim()}).`, err);
     }
 
-    // Validate genre saved on the database, if not, return 400 Bad Request.
+    // Validate that the genre was saved on the database, if not, return 400 - Bad Request.
     if (!genre) {
-        return res.status(400).send(`Failed to update the genre (id: ${req.params.id.trim()}) on the database.`);
+        return res.status(400).send(`Failed to update the genre (Id: ${req.params.id.trim()}) on the database.`);
     }
 
-    // Return updated genre.
+    // Return the updated genre.
     return res.send(genre);
 });
 
-// Delete genre and return it.
+// Delete a genre and return it.
 router.delete('/:id', [auth, admin], async (req, res) => {
 
-    //If invalid genre id parameter, return 400 Bad Request.
+    // If invalid genre Id parameter, return 400 - Bad Request.
     const validateIdResult = validateRequestId(req);
     if (!validateIdResult.isValid) {
         return res.status(400).send(validateIdResult.errorMessage);
     }
 
-    // Delete genre.
+    // Delete the genre.
     let genre;
     try {
         genre = await Genre.findByIdAndRemove(req.params.id.trim());
     } catch (err) {
-        console.error(`Failed to delete the genre (id: ${req.params.id.trim()}).`, err);
+        console.error(`Failed to delete the genre (Id: ${req.params.id.trim()}).`, err);
     }
 
-    // Validate genre deleted from the database, if not, return 400 Bad Request.
+    // Validate that the genre was deleted from the database, if not, return 400 - Bad Request.
     if (!genre) {
-        return res.status(400).send(`Failed to delete the genre (id: ${req.params.id.trim()}) from the database.`);
+        return res.status(400).send(`Failed to delete the genre (Id: ${req.params.id.trim()}) from the database.`);
     }
 
-    // Return deleted genre
+    // Return the deleted genre.
     return res.send(genre);
 });
 
-// Get specific genre by id and return it.
+// Get a specific genre by Id and return it.
 router.get('/:id', [validateObjectId], async (req, res) => {
 
-    // Get the genre by id.
+    // Get the genre by Id.
     let genre;
     try {
         genre = await Genre.findById(req.params.id.trim());
     } catch (err) {
-        console.error(`Failed to get the genre (id: ${req.params.id.trim()}).`, err);
+        console.error(`Failed to get the genre (Id: ${req.params.id.trim()}).`, err);
     }
 
-    // Validate genre from the database, if not exists, return 404 Not Found.
+    // Validate the genre from the database, if not exists, return 404 - Not Found.
     if (!genre) {
-        return res.status(404).send(`Failed to get the genre (id: ${req.params.id.trim()}) from the database.`);
+        return res.status(404).send(`Failed to get the genre (Id: ${req.params.id.trim()}) from the database.`);
     }
 
-    // Return genre
+    // Return the genre.
     return res.send(genre);
 });
 
-// Validate that the request id is not empty and the request id parameter.
+// Validate that the request Id is not empty and the request Id parameter.
 const validateRequestId = (req) => {
     if (!req) {
         return new ValidateResult(false, 'No request object.');

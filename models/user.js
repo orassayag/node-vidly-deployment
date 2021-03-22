@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const config = require(`../config/config.${(process.env.NODE_ENV || 'development')}.json`);
 const secrets = require(`../secrets/secrets.${(process.env.NODE_ENV || 'development')}.json`);
 
-// Create the schema.
+// Create a user schema.
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema({
     isAdmin: Boolean
 });
 
-// Add generate token method specific for the user model class.
+// Add a generated token method specific for the user model class.
 userSchema.methods.generateAuthToken = function () {
     return jwt.sign({
         _id: this._id,
@@ -41,12 +41,12 @@ userSchema.methods.generateAuthToken = function () {
     });
 };
 
-// Generate instance of user with the schema.
+// Generate instances of the user with the schema.
 const User = mongoose.model('User', userSchema);
 
 // Validate the user parameters.
 const validateUser = (user) => {
-    // Validate name
+    // Validate name.
     if (!user.name) {
         return new ValidateResult(false, 'Parameter name is required.');
     }

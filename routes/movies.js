@@ -14,24 +14,24 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Create movie and return it.
+// Create a movie and return it.
 router.post('/', auth, async (req, res) => {
 
-    //If invalid movie parameters, return 400 Bad Request.
+    // If invalid movie parameters, return 400 - Bad Request.
     const validateMovieResult = validateRequestMovie(req);
     if (!validateMovieResult.isValid) {
         return res.status(400).send(validateMovieResult.errorMessage);
     }
 
-    // Get the genre of the movie by the id
+    // Get the genre of the movie by the Id.
     const genre = await Genre.findById(req.body.genreId);
 
-    // Validate genre exists on the database, if not, return 400 Bad Request.
+    // Validate that the genre exists on the database, if not, return 400 - Bad Request.
     if (!genre) {
-        return res.status(400).send(`Genre not found (id: ${req.body.genreId.trim()}) on the database.`);
+        return res.status(400).send(`Genre not found (Id: ${req.body.genreId.trim()}) on the database.`);
     }
 
-    // Create new movie.
+    // Create a new movie.
     let movie;
     try {
         movie = await new Movie({
@@ -47,39 +47,39 @@ router.post('/', auth, async (req, res) => {
         console.error('Failed to create the movie.', err);
     }
 
-    // Validate movie saved on the database, if not, return 400 Bad Request.
+    // Validate that the movie was saved on the database, if not, return 400 - Bad Request.
     if (!movie) {
         return res.status(400).send('Failed to save the movie on the database.');
     }
 
-    // Return new movie
+    // Return the new movie.
     return res.send(movie);
 });
 
-// Update movie and return it.
+// Update a movie and return it.
 router.put('/:id', async (req, res) => {
 
-    //If invalid movie id parameter, return 400 Bad Request.
+    // If invalid movie Id parameter, return 400 - Bad Request.
     const validateIdResult = validateRequestId(req);
     if (!validateIdResult.isValid) {
         return res.status(400).send(validateIdResult.errorMessage);
     }
 
-    //If invalid movie parameters, return 400 Bad Request.
+    // If invalid movie parameters, return 400 - Bad Request.
     const validateMovieResult = validateRequestMovie(req);
     if (!validateMovieResult.isValid) {
         return res.status(400).send(validateMovieResult.errorMessage);
     }
 
-    // Get the genre of the movie by the id.
+    // Get the genre of the movie by the Id.
     const genre = await Genre.findById(req.body.genreId);
 
-    // Validate genre exists on the database, if not, return 400 Bad Request.
+    // Validate that the genre exists on the database, if not, return 400 - Bad Request.
     if (!genre) {
-        return res.status(400).send(`Genre not found (id: ${req.body.genreId.trim()}) on the database.`);
+        return res.status(400).send(`Genre not found (Id: ${req.body.genreId.trim()}) on the database.`);
     }
 
-    // Update existing movie.
+    // Update the existing movie.
     let movie;
     try {
         movie = await Movie.findByIdAndUpdate(req.params.id.trim(), {
@@ -94,71 +94,71 @@ router.put('/:id', async (req, res) => {
             new: true
         });
     } catch (err) {
-        console.error(`Failed to update the movie (id: ${req.params.id.trim()}).`, err);
+        console.error(`Failed to update the movie (Id: ${req.params.id.trim()}).`, err);
     }
 
-    // Validate movie saved on the database, if not, return 400 Bad Request.
+    // Validate that the movie was saved on the database, if not, return 400 - Bad Request.
     if (!movie) {
-        return res.status(400).send(`Failed to update the movie (id: ${req.params.id.trim()}) on the database.`);
+        return res.status(400).send(`Failed to update the movie (Id: ${req.params.id.trim()}) on the database.`);
     }
 
-    // Return updated movie.
+    // Return the updated movie.
     return res.send(movie);
 });
 
-// Delete movie and return it
+// Delete a movie and return it.
 router.delete('/:id', async (req, res) => {
 
-    //If invalid movie id parameter, return 400 Bad Request.
+    // If invalid movie Id parameter, return 400 - Bad Request.
     const validateIdResult = validateRequestId(req);
     if (!validateIdResult.isValid) {
         return res.status(400).send(validateIdResult.errorMessage);
     }
 
-    // Delete movie.
+    // Delete the movie.
     let movie;
     try {
         movie = await Movie.findByIdAndRemove(req.params.id.trim());
     } catch (err) {
-        console.error(`Failed to delete the movie (id: ${req.params.id.trim()}).`, err);
+        console.error(`Failed to delete the movie (Id: ${req.params.id.trim()}).`, err);
     }
 
-    // Validate movie deleted from the database, if not, return 400 Bad Request.
+    // Validate that the movie was deleted from the database, if not, return 400 - Bad Request.
     if (!movie) {
-        return res.status(400).send(`Failed to delete the movie (id: ${req.params.id.trim()}) from the database.`);
+        return res.status(400).send(`Failed to delete the movie (Id: ${req.params.id.trim()}) from the database.`);
     }
 
-    // Return deleted movie.
+    // Return the deleted movie.
     return res.send(movie);
 });
 
-// Get specific movie by id and return it.
+// Get a specific movie by Id and return it.
 router.get('/:id', async (req, res) => {
 
-    //If invalid movie id parameter, return 400 Bad Request.
+    // If invalid movie Id parameter, return 400 - Bad Request.
     const validateIdResult = validateRequestId(req);
     if (!validateIdResult.isValid) {
         return res.status(400).send(validateIdResult.errorMessage);
     }
 
-    // Get the movie by id.
+    // Get the movie by Id.
     let movie;
     try {
         movie = await Movie.findById(req.params.id.trim());
     } catch (err) {
-        console.error(`Failed to get the movie (id: ${req.params.id.trim()}).`, err);
+        console.error(`Failed to get the movie (Id: ${req.params.id.trim()}).`, err);
     }
 
-    // Validate movie from the database, if not exists, return 404 Not Found.
+    // Validate the movie from the database, if not exists, return 404 - Not Found.
     if (!movie) {
-        return res.status(404).send(`Failed to get the movie (id: ${req.params.id.trim()}) from the database.`);
+        return res.status(404).send(`Failed to get the movie (Id: ${req.params.id.trim()}) from the database.`);
     }
 
-    // Return movie.
+    // Return the movie.
     return res.send(movie);
 });
 
-// Validate that the request id is not empty and the request id parameter.
+// Validate that the request Id is not empty and the request Id parameter.
 const validateRequestId = (req) => {
     if (!req) {
         return new ValidateResult(false, 'No request object.');
