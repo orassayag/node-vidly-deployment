@@ -1,7 +1,12 @@
 {
     "name": "node-vidly-deployment",
     "version": "1.0.0",
+    "private": false,
     "description": "",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/orassayag/node-vidly-deployment.git"
+    },
     "main": "index.js",
     "scripts": {
         "start": "node index.js",

@@ -8,7 +8,7 @@ Clone the project to your computer.
 
 ### Prerequisites
 
-Use VS code, and install all packages by running 'npm i', and 'node start index.js'.
+Use VSCode, and install all packages by running 'npm i', and 'node start index.js'.
 
 ## Built With
 
