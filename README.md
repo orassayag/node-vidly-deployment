@@ -8,14 +8,14 @@ Clone the project to your computer.
 
 ### Prerequisites
 
-Use VSCode, and install all packages by running 'npm i', and 'node start index.js'.
+Use VSCode, and install all packages by running in the terminal 'npm i', and 'node start index.js'.
 
 ## Built With
 
 * [Node.js](https://nodejs.org/en/) - The web framework used.
 * [MongoDB](https://www.mongodb.com/) - The database used.
 * [JavaScript](https://javascript.info/) - The web framework used.
-* [GIT](https://git-scm.com/) - Source Management.
+* [GIT](https://git-scm.com/) - Source management.
 
 ## Contributing
 
@@ -31,7 +31,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 * Or Assayag <orassayag@gmail.com>
 * GitHub: https://github.com/orassayag
 * StackOverFlow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
-* LinkedIn: https://il.linkedin.com/in/orassayag
+* LinkedIn: https://linkedin.com/in/orassayag
 
 ## License
 
