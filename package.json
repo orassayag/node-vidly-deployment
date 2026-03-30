@@ -2,7 +2,7 @@
     "name": "node-vidly-deployment",
     "version": "1.0.0",
     "private": false,
-    "description": "",
+    "description": "Production-ready RESTful API for movie rental service with JWT authentication, MongoDB persistence, and comprehensive security features",
     "repository": {
         "type": "git",
         "url": "git://github.com/orassayag/node-vidly-deployment.git"
@@ -15,9 +15,21 @@
     "engines": {
         "node": "8.11.3"
     },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
+    "keywords": [
+        "nodejs",
+        "express",
+        "mongodb",
+        "rest-api",
+        "jwt",
+        "authentication",
+        "movie-rental",
+        "mongoose",
+        "video-rental",
+        "backend",
+        "api"
+    ],
+    "author": "Or Assayag <orassayag@gmail.com> (https://github.com/orassayag)",
+    "license": "MIT",
     "dependencies": {
         "bcrypt": "^3.0.0",
         "compression": "^1.7.3",
