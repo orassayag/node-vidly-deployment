@@ -1,16 +1,27 @@
 {
-    "eslint.trace.server": "messages",
-    "eslint.alwaysShowStatus": true,
-    "beautify.config": {
-        "brace_style": "collapse,preserve-inline"
-    },
-    "files.trimFinalNewlines": true,
-    "editor.insertSpaces": true,
-    "cSpell.words": [
-        "Assayag",
-        "genr",
-        "orassayag",
-        "vidly",
-        "vidlyuser"
-    ]
+  "eslint.trace.server": "messages",
+  "eslint.alwaysShowStatus": true,
+  "beautify.config": {
+    "brace_style": "collapse,preserve-inline"
+  },
+  "files.trimFinalNewlines": true,
+  "editor.insertSpaces": true,
+  "cSpell.words": [
+    "Assayag",
+    "EADDRINUSE",
+    "findstr",
+    "genr",
+    "logfile",
+    "orassayag",
+    "taskkill",
+    "vidly",
+    "vidlyuser"
+  ],
+  "cSpell.ignorePaths": [
+    "coverage",
+    "node_modules",
+    "dist",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml"
+  ]
 }

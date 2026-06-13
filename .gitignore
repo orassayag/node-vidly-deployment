@@ -1,1 +1,30 @@
+# Distribution
+dist
+out
+build
+node_modules
 node_modules/
+
+# Logs
+*.log*
+logs
+
+# Environment
+*.env*
+!.env.example
+.env.production
+.env.test
+
+# OAuth
+token.json
+client_secret*.json
+
+# Runtime Data
+api-stats.json
+
+# Misc
+.DS_Store
+.pnpm-store
+
+# Tests
+coverage

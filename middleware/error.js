@@ -1,11 +1,11 @@
 const winston = require('winston');
 
 // Error handling middleware.
-module.exports = ((err, req, res, next) => {
-    if (err) {
-        winston.error(err.message, err);
-    }
+module.exports = (err, req, res, next) => {
+  if (err) {
+    winston.error(err.message, err);
+  }
 
-    // If an exception occurred, return 500 - Internal Server Error.
-    return res.status(500).send('Something went wrong.');
-});
+  // If an exception occurred, return 500 - Internal Server Error.
+  return res.status(500).send('Something went wrong.');
+};

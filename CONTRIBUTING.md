@@ -9,13 +9,14 @@ Everyone is welcome to contribute to this project. Contributing doesn't just mea
 ### Reporting Issues
 
 If you find a bug or have a feature request:
+
 1. Check if the issue already exists in the [GitHub Issues](https://github.com/orassayag/node-vidly-deployment/issues)
 2. If not, create a new issue with:
    - Clear title and description
    - Steps to reproduce (for bugs)
    - Expected vs actual behavior
-   - Your environment details (OS, Node version, MongoDB version)
-   - Sample request/response (if applicable)
+   - Error codes (if applicable)
+   - Your environment details (OS, Node version)
 
 ### Submitting Pull Requests
 
@@ -32,55 +33,55 @@ If you find a bug or have a feature request:
 ### Code Style Guidelines
 
 This project uses:
-- **JavaScript ES6** syntax
+
+- **TypeScript** with strict type checking
 - **ESLint** for code quality
-- **Jest** for testing
+- **Prettier** for code formatting
+- **InversifyJS** for dependency injection
 
 Before submitting:
-```bash
-# Run tests
-npm test
 
-# Check for linting errors
-npm run lint
+```bash
+pnpm format
+pnpm lint
+pnpm build
+pnpm test
 ```
 
 ### Coding Standards
 
-1. **Validation**: Always validate user input before processing
-2. **Error handling**: Use try-catch blocks and return appropriate HTTP status codes
-3. **Security**: Never expose sensitive data in error messages or logs
-4. **Authentication**: Protect routes that modify data with authentication middleware
-5. **Database**: Use Mongoose models and schemas for all database operations
-6. **RESTful design**: Follow REST conventions for endpoints
-7. **Transactions**: Use Fawn for operations requiring multiple database updates
+1. **Dependency Injection**: Use @injectable decorators for services
+2. **Error handling**: All errors must include unique error codes (see `misc/error_index.txt`)
+3. **Logging**: Use structured Logger instead of console.log
+4. **Type safety**: Avoid using `any` - define proper types
+5. **Domain organization**: Place code in appropriate domain folders (not utils/)
+6. **Naming**: Use clear, descriptive names for variables and functions
 
-### Testing
+### Adding New Features
 
 When adding new features:
-1. Write both unit and integration tests
-2. Place unit tests in `tests/unit/`
-3. Place integration tests in `tests/integration/`
-4. Use descriptive test names
-5. Mock external dependencies appropriately
-6. Ensure all tests pass before submitting PR
 
-### API Endpoints
+1. Create appropriate types in `src/types/`
+2. Add service logic in `src/services/` with DI
+3. Update scripts in `src/scripts/` if needed
+4. Add error codes and update `misc/error_index.txt`
+5. Test thoroughly with vitest
 
-When adding or modifying endpoints:
-1. Follow RESTful naming conventions
-2. Return appropriate HTTP status codes
-3. Include proper validation
-4. Add authentication where needed
-5. Document the endpoint behavior
+### Error Code Management
+
+When adding new errors:
+
+1. Use the next available error code from `misc/error_index.txt`
+2. Format: `[ERROR-XXXXXXX]` at the start of the error message
+3. Document the error in `misc/error_index.txt`
 
 ## Questions or Need Help?
 
 Please feel free to contact me with any question, comment, pull-request, issue, or any other thing you have in mind.
 
-* Or Assayag <orassayag@gmail.com>
-* GitHub: https://github.com/orassayag
-* StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
-* LinkedIn: https://linkedin.com/in/orassayag
+- Or Assayag <orassayag@gmail.com>
+- GitHub: https://github.com/orassayag
+- StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+- LinkedIn: https://linkedin.com/in/orassayag
 
 Thank you for contributing! 🙏
